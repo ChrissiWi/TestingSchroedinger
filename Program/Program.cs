@@ -1,6 +1,5 @@
 ﻿using MyLibrary;
 
-
 ILogger logger = new FileLogger(Config.LogFile);
 Keeper keeper = new Keeper();
 
