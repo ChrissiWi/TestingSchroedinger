@@ -1,0 +1,9 @@
+1) dotnet new classlib -o MyLibrary
+2) dotnet new console -o Program
+3) dotnet new mstest -o ProgramTest
+4) dotnet new sln
+5) dotnet sln add MyLibrary/
+6) dotnet sln add Program/
+7) dotnet sln add ProgramTest/
+8) dotnet add Program/Program.csproj reference MyLibrary/MyLibrary.csproj
+9) dotnet add ProgramTest/ProgramTest.csproj reference MyLibrary/MyLibrary.csproj
