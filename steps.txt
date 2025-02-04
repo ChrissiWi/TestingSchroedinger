@@ -1,5 +1,4 @@
 setup:
-
 1) dotnet new classlib -o MyLibrary
 2) dotnet new console -o Program
 3) dotnet new mstest -o ProgramTest
