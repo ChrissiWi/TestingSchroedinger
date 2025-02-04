@@ -4,8 +4,23 @@ namespace ProgramTest;
 [TestClass]
 public class UnitTest1
 {
+    private Elf? _elf;
+
+    [TestInitialize]
+    public void Init()
+    {
+        _elf = new Elf("Legolas", 12);
+    }
+
     [TestMethod]
-    [DynamicData(nameof(UnitTestData), DynamicDataSourceType.Method)]
+    public void Test_Play() 
+    {
+        _elf!.Play();
+        Assert.AreEqual("Legolas is playing.", _elf.Play());
+    }
+
+    [TestMethod]
+    [DynamicData(nameof(SplitByEnergyData), DynamicDataSourceType.Method)]
     public void Test_SplitByEnergy(List<Creature> creatures, int expectedLower)
     {
         int expectedUpper = creatures.Count() - expectedLower;
@@ -16,7 +31,7 @@ public class UnitTest1
         Assert.AreEqual(expectedUpper, resultHigher.Count());
     }
 
-    public static List<object[]> UnitTestData()
+    public static List<object[]> SplitByEnergyData()
     {
         return new List<object[]>{
             new object[] {new List<Creature>{new Elf("Legolas", 12)}, 0},
