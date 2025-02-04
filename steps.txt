@@ -11,5 +11,5 @@ setup:
 9) dotnet add ProgramTest/ProgramTest.csproj reference MyLibrary/MyLibrary.csproj
 
 run tests:
-cd ProgramTest
-dotnet test
+1) cd ProgramTest
+2) dotnet test
