@@ -1,6 +1,6 @@
 namespace MyLibrary;
 
-public class Elf(string name, int energy) : LivingCreature (name, energy)
+public class Elf(string name, int energy, DateTime birthday) : LivingCreature(name, energy, birthday)
 {
   public new void Eat(object sender, EventArgs e)
     {

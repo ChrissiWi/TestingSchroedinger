@@ -9,7 +9,7 @@ public class UnitTest1
     [TestInitialize]
     public void Init()
     {
-        _elf = new Elf("Legolas", 12);
+        _elf = new Elf("Legolas", 12, new DateTime(90, 1, 1));
     }
 
     [TestMethod]
@@ -34,8 +34,8 @@ public class UnitTest1
     public static List<object[]> SplitByEnergyData()
     {
         return new List<object[]>{
-            new object[] {new List<Creature>{new Elf("Legolas", 12)}, 0},
-            new object[] {new List<Creature>{new Bumbelbee("Maja", 2),
+            new object[] {new List<Creature>{new Elf("Legolas", 12, new DateTime(90, 1, 1))}, 0},
+            new object[] {new List<Creature>{new Bumbelbee("Maja", 2, DateTime.Now.AddYears(-1)),
                                              new Ghost("Edgar", 0),
                                              new SlimeGhost("Allen", -1)}, 3}
         };

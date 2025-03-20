@@ -3,10 +3,13 @@ namespace MyLibrary;
 public abstract class LivingCreature : Creature
 {
     private Behavior behavior;
+    public DateTime Birthday { get; init; }
+    public int Age => (int)((DateTime.Now - Birthday).TotalDays / 365.25);
 
-    public LivingCreature(string name, int energy) : base(name, energy)
+    public LivingCreature(string name, int energy, DateTime birthday) : base(name, energy)
     {
         behavior = new Behavior();
+        Birthday = birthday;
     }
 
     public virtual void Eat(object? sender, EventArgs? e)

@@ -4,9 +4,9 @@ ILogger logger = new FileLogger(Config.LogFile);
 Keeper keeper = new Keeper();
 
 List<Creature> creatures = [
-    new Elf("Legolas", 12),
-    new Dwarf("Gimli", 8),
-    new Bumbelbee("Maja", 2),
+    new Elf("Legolas", 12, new DateTime(90, 1, 1)),      // Born in Third Age 90
+    new Dwarf("Gimli", 8, new DateTime(1884, 7, 15)),    // Born in Third Age 2879
+    new Bumbelbee("Maja", 2, DateTime.Now.AddYears(-1)),  // Born 1 year ago
     new Ghost("Edgar", 4),
     new SlimeGhost("Allen", 5)
     ];
@@ -15,7 +15,7 @@ List<Creature> creatures = [
 keeper.FeedCreatures();
 keeper.FeedCreatures();
 
-Bumbelbee bee = new Bumbelbee("Maja", 2);
+Bumbelbee bee = new Bumbelbee("Maja", 2, DateTime.Now.AddYears(-1));
 try
 {
     bee.Fly();
