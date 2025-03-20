@@ -16,27 +16,42 @@ public class Behavior
     }
 
     private Emotions emotions;
+    private readonly ILogger? logger;
 
-public Behavior()   
-{
-    emotions = Emotions.Curious | Emotions.Hungry;
-}
+    public Behavior(ILogger? logger = null)   
+    {
+        this.logger = logger;
+        emotions = Emotions.Curious | Emotions.Hungry;
+        LogState("Initial state");
+    }
+
     public bool IsHungry =>  emotions.HasFlag(Emotions.Hungry);
 
     public bool IsPlayfull => emotions.HasFlag(Emotions.Curious) 
                             | emotions.HasFlag(Emotions.Excited) 
                             | emotions.HasFlag(Emotions.Happy);
 
+    public string CurrentEmotions => emotions.ToString();
+
     public void HasEaten()
     {
+        LogState("Before eating");
         emotions &= ~Emotions.Hungry;
         emotions |= Emotions.Tired;
+        LogState("After eating");
     }
 
     public void HasPlayed()
     {
+        LogState("Before playing");
         emotions |= Emotions.Hungry;
         emotions |= Emotions.Tired;
+        LogState("After playing");
+    }
+
+    private void LogState(string context)
+    {
+        logger?.Log(LogLevel.Info, $"[Behavior] {context} - Emotions: {emotions}, IsHungry: {IsHungry}, IsPlayful: {IsPlayfull}");
     }
 
 }

@@ -1,6 +1,6 @@
 namespace MyLibrary;
 
-public class Dwarf(string name, int energy, DateTime birthday) : LivingCreature(name, energy, birthday)
+public class Dwarf(string name, int energy, DateTime birthday, ILogger? logger = null) : LivingCreature(name, energy, birthday, logger)
 {
     public override void Eat(object? sender, EventArgs? e)
     {
