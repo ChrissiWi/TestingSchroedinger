@@ -8,6 +8,9 @@ public abstract class LivingCreature : Creature
 
     public LivingCreature(string name, int energy, DateTime birthday) : base(name, energy)
     {
+        if (birthday > DateTime.Now)
+            throw new ArgumentException("Birthday cannot be in the future", nameof(birthday));
+            
         behavior = new Behavior();
         Birthday = birthday;
     }
@@ -42,7 +45,7 @@ public abstract class LivingCreature : Creature
 
     public override string ToString()
     {
-        return base.ToString();
+        return $"{base.ToString()} I was born on {Birthday:d}.";
     }
 
     public void FeedMe(Keeper keeper) => keeper.Feed += Eat;
